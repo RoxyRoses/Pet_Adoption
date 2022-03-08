@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:pet_adoption/barraApp.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  bool _botaoAtivadoDog = true;
+  bool _botaoAtivadoCat = true;
+  bool _botaoAtivadoBird = true;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +21,7 @@ class HomePage extends StatelessWidget {
         child: BarraApp(),
       ),
       body: Stack(children: [
-        Container(
+        SizedBox(
           height: 80,
           child: ListView(
             scrollDirection: Axis.horizontal,
@@ -31,60 +40,72 @@ class HomePage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 15, top: 15, bottom: 15),
                 child: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      _botaoAtivadoDog = !_botaoAtivadoDog;
+                      _botaoAtivadoBird = true;
+                      _botaoAtivadoCat = true;
+                    });
+                  },
                   icon: Image.asset('assets/images/icons/dog.png'),
-                  label: const Text('Dogs'),
-                  style: ButtonStyle(
-                    backgroundColor: MudarCor(Colors.white, Colors.red),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
+                  label: Text(
+                    'Dogs',
+                    style: TextStyle(
+                        color: _botaoAtivadoDog ? Colors.black : Colors.white),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: _botaoAtivadoDog ? Colors.white : Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
                     ),
-                    overlayColor: MudarCor(
-                        Colors.white, const Color.fromARGB(255, 216, 95, 47)),
                   ),
                 ),
               ),
-              Padding(
+               Padding(
                 padding: const EdgeInsets.only(left: 15, top: 15, bottom: 15),
                 child: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      _botaoAtivadoCat = !_botaoAtivadoCat;
+                      _botaoAtivadoDog = true;
+                      _botaoAtivadoBird = true;
+                    });
+                  },
                   icon: Image.asset('assets/images/icons/cat.png'),
-                  label: const Text(
+                  label: Text(
                     'Cats',
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(
+                        color: _botaoAtivadoCat ? Colors.black : Colors.white),
                   ),
-                  style: ButtonStyle(
-                    backgroundColor: MudarCor(Colors.white, Colors.red),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
+                  style: ElevatedButton.styleFrom(
+                    primary: _botaoAtivadoCat ? Colors.white : Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
                     ),
-                    overlayColor: MudarCor(
-                        Colors.white, const Color.fromARGB(255, 216, 95, 47)),
                   ),
                 ),
               ),
-              Padding(
+               Padding(
                 padding: const EdgeInsets.only(left: 15, top: 15, bottom: 15),
                 child: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      _botaoAtivadoBird = !_botaoAtivadoBird;
+                      _botaoAtivadoCat = true;
+                      _botaoAtivadoDog = true;
+                    });
+                  },
                   icon: Image.asset('assets/images/icons/bird.png'),
-                  label: const Text(
+                  label: Text(
                     'Birds',
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(
+                        color: _botaoAtivadoBird ? Colors.black : Colors.white),
                   ),
-                  style: ButtonStyle(
-                    backgroundColor: MudarCor(Colors.white, Colors.red),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
+                  style: ElevatedButton.styleFrom(
+                    primary: _botaoAtivadoBird ? Colors.white : Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
                     ),
-                    overlayColor: MudarCor(
-                        Colors.white, const Color.fromARGB(255, 216, 95, 47)),
                   ),
                 ),
               ),

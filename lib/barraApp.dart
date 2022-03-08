@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class BarraApp extends StatelessWidget {
@@ -40,12 +42,15 @@ class BarraApp extends StatelessWidget {
             ],
           ),
         ),
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('assets/images/person/avatar.jpg'),
+            padding: const EdgeInsets.only(top: 10),
+            child: GestureDetector(
+              onTap: () {},
+              child: const CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage('assets/images/person/avatar.jpg'),
+              ),
             ),
           )
         ],
