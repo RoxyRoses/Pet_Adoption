@@ -19,7 +19,9 @@ class BarraApp extends StatelessWidget {
             child: IconButton(
               icon: Image.asset('assets/images/icons/menu1.png'),
               color: Colors.black,
-              onPressed: () {},
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
             ),
           );
         }),
