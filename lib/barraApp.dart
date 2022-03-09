@@ -14,44 +14,53 @@ class BarraApp extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         leading: Builder(builder: (BuildContext context) {
-          return Padding(
-            padding: const EdgeInsets.only(left: 8, top: 9, right: 6),
-            child: IconButton(
-              icon: Image.asset('assets/images/icons/menu1.png'),
-              color: Colors.black,
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8, top: 9, right: 6),
+              child: IconButton(
+                icon: Image.asset('assets/images/icons/menu1.png'),
+                color: Colors.black,
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
             ),
           );
         }),
         title: Padding(
           padding: const EdgeInsets.only(top: 10.0, left: 70.0),
-          child: Column(
-            children: <Widget>[
-              Text(
-                'Location',
-                style: TextStyle(
-                    color: Colors.black.withOpacity(0.5), fontSize: 15),
-              ),
-              const Text(
-                'Cameron St. Boston',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                Text(
+                  'Location',
+                  style: TextStyle(
+                      color: Colors.black.withOpacity(0.5), fontSize: 15),
                 ),
-              ),
-            ],
+                const Text(
+                  'Cameron St. Boston',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(top: 10),
             child: GestureDetector(
-              onTap: () {},
-              child: const CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage('assets/images/person/avatar.jpg'),
+              onTap: () {
+                print('avatar');
+              },
+              child: const Center(
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage:
+                      AssetImage('assets/images/person/avatar.jpg'),
+                ),
               ),
             ),
           )
