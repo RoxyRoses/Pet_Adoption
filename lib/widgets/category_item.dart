@@ -36,12 +36,28 @@ class CategoryItem extends StatelessWidget {
       case true:
         localColor = const Color(0xffFF5F50);
         fontColor = const Color(0xffFFFFFF);
-        imagePath = 'assets/images/icons/dog.png';
+        if (categoryName == 'Dog') {
+          imagePath = 'assets/images/icons/dog.png';
+        }
+        if (categoryName == 'Cat') {
+          imagePath = 'assets/images/icons/cat.png';
+        }
+        if (categoryName == 'Bird') {
+          imagePath = 'assets/images/icons/bird.png';
+        }
         break;
       case false:
         localColor = const Color(0xffFFFFFF);
         fontColor = const Color(0xff000000);
-        imagePath = 'assets/images/icons/dog.png';
+        if (categoryName == 'Dog') {
+          imagePath = 'assets/images/icons/dog.png';
+        }
+        if (categoryName == 'Cat') {
+          imagePath = 'assets/images/icons/cat.png';
+        }
+        if (categoryName == 'Bird') {
+          imagePath = 'assets/images/icons/bird.png';
+        }
         break;
       default:
     }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_adoption/barraApp.dart';
-import 'package:pet_adoption/categorias.dart';
+import 'package:pet_adoption/model.dart';
 import 'package:pet_adoption/widgets/category_item.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,7 +12,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool selected = false;
-  final List<String> categories = ['Dog', 'Cat', 'Bird'];
+  late int indexSelecionado;
+  List<Model> categories = <Model>[];
+
+  @override
+  void initState() {
+    categories.add(Model(
+      name: 'Dog',
+      isSelected: false,
+    ));
+    categories.add(Model(
+      name: 'Cat',
+      isSelected: false,
+    ));
+    categories.add(Model(
+      name: 'Bird',
+      isSelected: false,
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +48,25 @@ class _HomePageState extends State<HomePage> {
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemBuilder: ((context, index) {
-                return CategoryItem(
-                  externalPadding: EdgeInsets.only(left: 25),
-                  height: 50,
-                  categoryName: categories[index],
-                  tap: () {
-                    setState(() {
-                      selected = !selected;
-                      print(selected);
-                    });
-                  },
-                  isSelected: selected,
+                return Row(
+                  children: [
+                    CategoryItem(
+                      externalPadding: EdgeInsets.only(left: 25),
+                      height: 50,
+                      categoryName: categories[index].name,
+                      tap: () {
+                        setState(() {
+                          categories.forEach((element) {
+                            element.isSelected = false;
+                          });
+                          categories[index].isSelected = true;
+                          /*selected = !selected;
+                          print(index);*/
+                        });
+                      },
+                      isSelected: categories[index].isSelected,
+                    ),
+                  ],
                 );
               }),
             ),
