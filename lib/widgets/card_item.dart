@@ -41,15 +41,21 @@ class CardItem extends StatelessWidget {
                 child: Center(
                   child: Row(
                     children: [
-                      Center(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.circular(height * 25 / 200),
-                          ),
-                          child: AspectRatio(
-                            aspectRatio: 1,
-                            child: Image.asset(imagePath),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: Container(
+                            width: height * 180 / 200,
+                            height: height * 180 / 200,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.circular(height * 25 / 200),
+                              shape: BoxShape.rectangle,
+                              image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image: AssetImage(imagePath),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -69,7 +75,7 @@ class CardItem extends StatelessWidget {
                                   textAlign: TextAlign.left,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 90),
+                                  padding: const EdgeInsets.only(left: 30),
                                   child: FavoriteButton(
                                     valueChanged: (_isFavorite) {
                                       print('Is Favorite $_isFavorite)');
@@ -78,63 +84,62 @@ class CardItem extends StatelessWidget {
                                 )
                               ],
                             ),
-                            Column(
-                              children: [
-                                SizedBox(
-                                  height: height * 3 / 20,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 130),
-                                    child: Text(
-                                      petBreed,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
-                                        color: Color(0xff747372),
+                            SizedBox(
+                              height: height * 3 / 20,
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 130),
+                                child: Text(
+                                  petBreed,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Color(0xff747372),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: height * 2.5 / 20,
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 55),
+                                child: Text(
+                                  petSexandAge,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                    color: Color(0xffB4B4B4),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 25,
+                            ),
+                            SizedBox(
+                              height: height * 2 / 20,
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 100),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      height: height * 2 / 20,
+                                      child: AspectRatio(
+                                        aspectRatio: 1,
+                                        child: Image.asset(
+                                            'assets/images/icons/placefill.png'),
                                       ),
                                     ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 6),
-                                  child: Text(
-                                    petSexandAge,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                      color: Color(0xffB4B4B4),
+                                    Text(
+                                      distance,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                        color: Color(0xffB4B4B4),
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                                const SizedBox(
-                                  height: 25,
-                                ),
-                                SizedBox(
-                                  height: height * 2 / 20,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 100),
-                                    child: Row(
-                                      children: [
-                                        SizedBox(
-                                          height: height * 2 / 20,
-                                          child: AspectRatio(
-                                            aspectRatio: 1,
-                                            child: Image.asset(
-                                                'assets/images/icons/placefill.png'),
-                                          ),
-                                        ),
-                                        Text(
-                                          distance,
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 12,
-                                            color: Color(0xffB4B4B4),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                           ],
                         ),

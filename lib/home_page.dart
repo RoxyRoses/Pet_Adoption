@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pet_adoption/barraApp.dart';
 import 'package:pet_adoption/model.dart';
+import 'package:pet_adoption/pet_model.dart';
 import 'package:pet_adoption/widgets/card_item.dart';
 import 'package:pet_adoption/widgets/category_item.dart';
 
@@ -15,6 +16,8 @@ class _HomePageState extends State<HomePage> {
   bool selected = false;
   late int indexSelecionado;
   List<Model> categories = <Model>[];
+  List<String> petPhotos = <String>[];
+  List<PetModel> pets = <PetModel>[];
 
   @override
   void initState() {
@@ -29,6 +32,36 @@ class _HomePageState extends State<HomePage> {
     categories.add(Model(
       name: 'Bird',
       isSelected: false,
+    ));
+
+    petPhotos.add('assets/images/pets/pet1.png');
+    petPhotos.add('assets/images/pets/pet2.png');
+    petPhotos.add('assets/images/pets/pet3.png');
+    petPhotos.add('assets/images/pets/pet4.png');
+
+    pets.add(PetModel(
+      name: 'Charlie',
+      breed: 'Golden Retriever',
+      sexAge: 'Female, 8 months old',
+      distance: '2.5 Kms away',
+    ));
+    pets.add(PetModel(
+      name: 'Charlie',
+      breed: 'Pug',
+      sexAge: 'Male, 1.5 years old',
+      distance: '2.6 Kms away',
+    ));
+    pets.add(PetModel(
+      name: 'Max',
+      breed: 'Boston Terrier',
+      sexAge: 'Male, 1 year old',
+      distance: '2.9 Kms away',
+    ));
+    pets.add(PetModel(
+      name: 'Daisy',
+      breed: 'Maltese',
+      sexAge: 'Female, 7 months old',
+      distance: '3 Kms away',
     ));
   }
 
@@ -88,7 +121,36 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          CardItem(),
+          SizedBox(
+            height: 450,
+            width: MediaQuery.of(context).size.width * 1,
+            child: ListView.builder(
+              itemCount: petPhotos.length,
+              physics: const BouncingScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              itemBuilder: ((context, index) {
+                return Column(
+                  children: [
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: CardItem(
+                        height: 140,
+                        width: 380,
+                        imagePath: petPhotos[index],
+                        petName: 'Charlie',
+                        petBreed: pets[index].breed,
+                        petSexandAge: pets[index].sexAge,
+                        distance: pets[index].distance,
+                      ),
+                    ),
+                  ],
+                );
+              }),
+            ),
+          )
         ],
       ),
     );
