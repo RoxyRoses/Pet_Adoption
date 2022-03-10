@@ -10,25 +10,22 @@ class BarraApp extends StatelessWidget {
     return PreferredSize(
       preferredSize: const Size.fromHeight(80),
       child: AppBar(
-        centerTitle: false,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         leading: Builder(builder: (BuildContext context) {
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8, top: 9, right: 6),
-              child: IconButton(
-                icon: Image.asset('assets/images/icons/menu1.png'),
-                color: Colors.black,
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-              ),
+          return Padding(
+            padding: const EdgeInsets.only(left: 8, top: 9, right: 6),
+            child: IconButton(
+              icon: Image.asset('assets/images/icons/menu1.png'),
+              color: Colors.black,
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
             ),
           );
         }),
         title: Padding(
-          padding: const EdgeInsets.only(top: 10.0, left: 70.0),
+          padding: const EdgeInsets.only(top: 10, left: 45),
           child: Center(
             child: Column(
               children: <Widget>[
@@ -53,7 +50,7 @@ class BarraApp extends StatelessWidget {
             padding: const EdgeInsets.only(top: 10),
             child: GestureDetector(
               onTap: () {
-                print('avatar');
+                debugPrint('avatar');
               },
               child: const Center(
                 child: CircleAvatar(

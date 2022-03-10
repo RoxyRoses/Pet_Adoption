@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pet_adoption/barraApp.dart';
-import 'package:pet_adoption/model.dart';
-import 'package:pet_adoption/pet_model.dart';
+import 'package:pet_adoption/widgets/barraApp.dart';
+import 'package:pet_adoption/Models/model.dart';
+import 'package:pet_adoption/Models/pet_model.dart';
 import 'package:pet_adoption/widgets/card_item.dart';
 import 'package:pet_adoption/widgets/category_item.dart';
 
@@ -40,8 +40,8 @@ class _HomePageState extends State<HomePage> {
     petPhotos.add('assets/images/pets/pet4.png');
 
     pets.add(PetModel(
-      name: 'Charlie',
-      breed: 'Golden Retriever',
+      name: 'Sparky',
+      breed: 'Corgi',
       sexAge: 'Female, 8 months old',
       distance: '2.5 Kms away',
     ));
@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           SizedBox(
-            height: 450,
+            height: 490,
             width: MediaQuery.of(context).size.width * 1,
             child: ListView.builder(
               itemCount: petPhotos.length,
@@ -131,16 +131,14 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: ((context, index) {
                 return Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      padding: const EdgeInsets.all(8.0),
                       child: CardItem(
-                        height: 140,
-                        width: 380,
                         imagePath: petPhotos[index],
-                        petName: 'Charlie',
+                        petName: pets[index].name,
                         petBreed: pets[index].breed,
                         petSexandAge: pets[index].sexAge,
                         distance: pets[index].distance,
