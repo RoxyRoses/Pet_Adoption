@@ -1,6 +1,5 @@
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class CardItem extends StatelessWidget {
   final double height;
@@ -30,7 +29,7 @@ class CardItem extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               height: height * (size.height / 1334),
               width: width,
               decoration: BoxDecoration(

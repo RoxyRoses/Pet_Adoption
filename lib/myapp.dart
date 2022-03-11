@@ -7,10 +7,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:  Center(
+      home: const Center(
         child: HomePage(),
       ),
-      theme: ThemeData( scaffoldBackgroundColor: Color.fromARGB(255, 215, 214, 219),
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color.fromARGB(255, 215, 214, 219),
       ),
     );
   }

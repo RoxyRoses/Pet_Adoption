@@ -13,25 +13,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool selected = false;
-  late int indexSelecionado;
   List<Model> categories = <Model>[];
   List<String> petPhotos = <String>[];
   List<PetModel> pets = <PetModel>[];
 
   @override
   void initState() {
+    super.initState();
+
     categories.add(Model(
       name: 'Dog',
-      isSelected: false,
     ));
     categories.add(Model(
       name: 'Cat',
-      isSelected: false,
     ));
     categories.add(Model(
       name: 'Bird',
-      isSelected: false,
     ));
 
     petPhotos.add('assets/images/pets/pet1.png');
@@ -84,7 +81,9 @@ class _HomePageState extends State<HomePage> {
                   backgroundColor: Colors.white,
                   child: IconButton(
                     icon: Image.asset('assets/images/icons/settings.png'),
-                    onPressed: () {},
+                    onPressed: () {
+                      debugPrint('filters');
+                    },
                   ),
                 ),
               ),
@@ -127,7 +126,6 @@ class _HomePageState extends State<HomePage> {
             child: ListView.builder(
               itemCount: petPhotos.length,
               physics: const BouncingScrollPhysics(),
-              scrollDirection: Axis.vertical,
               itemBuilder: ((context, index) {
                 return Column(
                   children: [

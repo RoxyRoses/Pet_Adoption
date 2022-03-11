@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 class BarraApp extends StatelessWidget {
@@ -17,9 +15,8 @@ class BarraApp extends StatelessWidget {
             padding: const EdgeInsets.only(left: 8, top: 9, right: 6),
             child: IconButton(
               icon: Image.asset('assets/images/icons/menu1.png'),
-              color: Colors.black,
               onPressed: () {
-                Scaffold.of(context).openDrawer();
+                debugPrint('drawer');
               },
             ),
           );
