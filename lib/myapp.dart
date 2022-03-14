@@ -7,7 +7,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp]); // bloqueia rotação celular
     return MaterialApp(
       home: const Center(
         child: HomePage(),

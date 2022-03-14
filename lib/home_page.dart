@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
 
     categories.add(CategoryModel(
       name: 'Dog',
+      isSelected: true,
     ));
     categories.add(CategoryModel(
       name: 'Cat',
@@ -64,88 +65,97 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    final size = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(80),
         child: BarraApp(),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 25),
-                child: CircleAvatar(
-                  radius: 25,
-                  backgroundColor: Colors.white,
-                  child: IconButton(
-                    icon: Image.asset('assets/images/icons/settings.png'),
-                    onPressed: () {
-                      debugPrint('filters');
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 89,
-                width: MediaQuery.of(context).size.width * 0.8,
-                child: ListView.builder(
-                  itemCount: categories.length,
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: ((context, index) {
-                    return Row(
-                      children: [
-                        CategoryItem(
-                          externalPadding: const EdgeInsets.only(left: 25),
-                          height: 50,
-                          categoryName: categories[index].name,
-                          tap: () {
-                            setState(() {
-                              for (var element in categories) {
-                                element.isSelected = false;
-                              }
-                              categories[index].isSelected = true;
-                            });
-                          },
-                          isSelected: categories[index].isSelected,
-                        ),
-                      ],
-                    );
-                  }),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 490,
-            width: MediaQuery.of(context).size.width * 1,
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: petPhotos.length,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: ((context, index) {
-                return Column(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              children: [
+                Row(
                   children: [
-                    const SizedBox(
-                      height: 10,
+                    Container(
+                      padding: const EdgeInsets.only(left: 15),
+                      height: 45,
+                      child: CircleAvatar(
+                        radius: 25,
+                        backgroundColor: Colors.white,
+                        child: IconButton(
+                          icon: Image.asset('assets/images/icons/settings.png'),
+                          onPressed: () {
+                            debugPrint('filters');
+                          },
+                        ),
+                      ),
                     ),
-                    CardItem(
-                      imagePath: petPhotos[index],
-                      petName: pets[index].name,
-                      petBreed: pets[index].breed,
-                      petSexandAge: pets[index].sexAge,
-                      distance: pets[index].distance,
+                    SizedBox(
+                      height: 89,
+                      width: MediaQuery.of(context).size.width * 0.76,
+                      child: ListView.builder(
+                        itemCount: categories.length,
+                        physics: const BouncingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: ((context, index) {
+                          return Row(
+                            children: [
+                              CategoryItem(
+                                externalPadding:
+                                    const EdgeInsets.only(left: 25),
+                                height: 50,
+                                categoryName: categories[index].name,
+                                tap: () {
+                                  setState(() {
+                                    for (var element in categories) {
+                                      element.isSelected = false;
+                                    }
+                                    categories[index].isSelected = true;
+                                  });
+                                },
+                                isSelected: categories[index].isSelected,
+                              ),
+                            ],
+                          );
+                        }),
+                      ),
                     ),
                   ],
-                );
-              }),
+                ),
+              ],
             ),
-          )
-        ],
+            SizedBox(
+              height: 490,
+              width: MediaQuery.of(context).size.width * 1,
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: petPhotos.length,
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: ((context, index) {
+                  return Column(
+                    children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CardItem(
+                        width: size * 0.90,
+                        imagePath: petPhotos[index],
+                        petName: pets[index].name,
+                        petBreed: pets[index].breed,
+                        petSexandAge: pets[index].sexAge,
+                        distance: pets[index].distance,
+                      ),
+                    ],
+                  );
+                }),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

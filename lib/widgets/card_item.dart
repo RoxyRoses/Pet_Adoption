@@ -13,7 +13,7 @@ class CardItem extends StatelessWidget {
   const CardItem(
       {Key? key,
       this.height = 256,
-      this.width = double.infinity, //pega maximo de um numero double
+      this.width = 630, //pega maximo de um numero double
       this.imagePath = 'assets/images/pets/perfil.png',
       this.petName = 'Dog',
       this.petBreed = 'Breed',
@@ -60,97 +60,71 @@ class CardItem extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    SizedBox(
-                      height: height - 8,
-                      child: LayoutBuilder(builder: (context, constraints) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: 250,
-                                  child: Text(
-                                    petName,
-                                    maxLines: 1,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 25,
-                                      color: Color(0xff2E2D2B),
-                                    ),
-                                    textAlign: TextAlign.left,
-                                  ),
-                                ),
-                              ],
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            petName,
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: width * 41 / 632,
+                              color: const Color(0xff2E2D2B),
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  width: 250,
-                                  child: Text(
-                                    petBreed,
-                                    maxLines: 1,
-                                    textAlign: TextAlign.start,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                      color: Color(0xff747372),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 250,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 6),
-                                    child: Text(
-                                      petSexandAge,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.fade,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                        color: Color(0xffB4B4B4),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: constraints.maxHeight * 0.1,
-                                ),
-                                SizedBox(
-                                  width: 250,
-                                  height: constraints.maxHeight * 0.2,
-                                  child: Row(children: [
-                                    SizedBox(
-                                      height: constraints.maxHeight * 0.1,
-                                      child: AspectRatio(
-                                        aspectRatio: 1,
-                                        child: Image.asset(
-                                            'assets/images/icons/placefill.png'),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 200,
-                                      child: Text(
-                                        distance,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-                                          color: Color(0xffB4B4B4),
-                                        ),
-                                      ),
-                                    ),
-                                  ]),
-                                ),
-                              ],
+                            textAlign: TextAlign.left,
+                          ),
+                          Text(
+                            petBreed,
+                            maxLines: 1,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: width * 32 / 632,
+                              color: Color(0xff747372),
                             ),
-                          ],
-                        );
-                      }),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            petSexandAge,
+                            softWrap: true,
+                            maxLines: 2,
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: width * 25 / 632,
+                              color: const Color(0xffB4B4B4),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 6,
+                          ),
+                          Row(children: [
+                            SizedBox(
+                              height: 15,
+                              child: AspectRatio(
+                                aspectRatio: 1,
+                                child: Image.asset(
+                                    'assets/images/icons/placefill.png'),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              distance,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: width * 30 / 632,
+                                color: const Color(0xffB4B4B4),
+                              ),
+                            ),
+                          ]),
+                        ],
+                      ),
                     ),
                   ],
                 ),
