@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_adoption/widgets/barraApp.dart';
-import 'package:pet_adoption/Models/model.dart';
+import 'package:pet_adoption/Models/category_model.dart';
 import 'package:pet_adoption/Models/pet_model.dart';
 import 'package:pet_adoption/widgets/card_item.dart';
 import 'package:pet_adoption/widgets/category_item.dart';
@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Model> categories = <Model>[];
+  List<CategoryModel> categories = <CategoryModel>[];
   List<String> petPhotos = <String>[];
   List<PetModel> pets = <PetModel>[];
 
@@ -21,13 +21,13 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    categories.add(Model(
+    categories.add(CategoryModel(
       name: 'Dog',
     ));
-    categories.add(Model(
+    categories.add(CategoryModel(
       name: 'Cat',
     ));
-    categories.add(Model(
+    categories.add(CategoryModel(
       name: 'Bird',
     ));
 
@@ -64,6 +64,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(80),
@@ -107,8 +109,6 @@ class _HomePageState extends State<HomePage> {
                                 element.isSelected = false;
                               }
                               categories[index].isSelected = true;
-                              /*selected = !selected;
-                              print(index);*/
                             });
                           },
                           isSelected: categories[index].isSelected,
@@ -124,6 +124,7 @@ class _HomePageState extends State<HomePage> {
             height: 490,
             width: MediaQuery.of(context).size.width * 1,
             child: ListView.builder(
+              shrinkWrap: true,
               itemCount: petPhotos.length,
               physics: const BouncingScrollPhysics(),
               itemBuilder: ((context, index) {
@@ -132,15 +133,12 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CardItem(
-                        imagePath: petPhotos[index],
-                        petName: pets[index].name,
-                        petBreed: pets[index].breed,
-                        petSexandAge: pets[index].sexAge,
-                        distance: pets[index].distance,
-                      ),
+                    CardItem(
+                      imagePath: petPhotos[index],
+                      petName: pets[index].name,
+                      petBreed: pets[index].breed,
+                      petSexandAge: pets[index].sexAge,
+                      distance: pets[index].distance,
                     ),
                   ],
                 );

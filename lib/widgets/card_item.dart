@@ -13,7 +13,7 @@ class CardItem extends StatelessWidget {
   const CardItem(
       {Key? key,
       this.height = 256,
-      this.width = double.infinity,
+      this.width = double.infinity, //pega maximo de um numero double
       this.imagePath = 'assets/images/pets/perfil.png',
       this.petName = 'Dog',
       this.petBreed = 'Breed',
@@ -28,52 +28,59 @@ class CardItem extends StatelessWidget {
       child: GestureDetector(
         child: Stack(
           children: [
-            Container(
-              padding: const EdgeInsets.all(8.0),
-              height: height * (size.height / 1334),
-              width: width,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(height * 25 / 200),
-                color: Colors.white,
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 30,
-                    child: LayoutBuilder(builder: (context, constraints) {
-                      return Container(
-                        width: constraints.maxWidth,
-                        height: constraints.maxWidth,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(height * 25 / 200),
-                          image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: AssetImage(imagePath),
+            Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+              child: Container(
+                padding: EdgeInsets.all(size.height * 8 / 632),
+                height: height * (size.height / 1334),
+                width: width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(height * 25 / 200),
+                  color: Colors.white,
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      height: height,
+                      child: AspectRatio(
+                        aspectRatio: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.circular(height * 22 / 200),
+                              image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image: AssetImage(imagePath),
+                              ),
+                            ),
                           ),
                         ),
-                      );
-                    }),
-                  ),
-                  Expanded(
-                    flex: 70,
-                    child: LayoutBuilder(builder: (context, constraints) {
-                      return Padding(
-                        padding: const EdgeInsets.only(left: 8),
-                        child: Column(
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    SizedBox(
+                      height: height - 8,
+                      child: LayoutBuilder(builder: (context, constraints) {
+                        return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  petName,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 25,
-                                    color: Color(0xff2E2D2B),
+                                SizedBox(
+                                  width: 250,
+                                  child: Text(
+                                    petName,
+                                    maxLines: 1,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 25,
+                                      color: Color(0xff2E2D2B),
+                                    ),
+                                    textAlign: TextAlign.left,
                                   ),
-                                  textAlign: TextAlign.left,
                                 ),
                               ],
                             ),
@@ -81,8 +88,10 @@ class CardItem extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
+                                  width: 250,
                                   child: Text(
                                     petBreed,
+                                    maxLines: 1,
                                     textAlign: TextAlign.start,
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -92,9 +101,12 @@ class CardItem extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(
-                                  child: Expanded(
+                                  width: 250,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 6),
                                     child: Text(
                                       petSexandAge,
+                                      maxLines: 2,
                                       overflow: TextOverflow.fade,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -108,42 +120,47 @@ class CardItem extends StatelessWidget {
                                   height: constraints.maxHeight * 0.1,
                                 ),
                                 SizedBox(
+                                  width: 250,
                                   height: constraints.maxHeight * 0.2,
-                                  child: Row(
-                                    children: [
-                                      SizedBox(
-                                        height: constraints.maxHeight * 0.1,
-                                        child: AspectRatio(
-                                          aspectRatio: 1,
-                                          child: Image.asset(
-                                              'assets/images/icons/placefill.png'),
-                                        ),
+                                  child: Row(children: [
+                                    SizedBox(
+                                      height: constraints.maxHeight * 0.1,
+                                      child: AspectRatio(
+                                        aspectRatio: 1,
+                                        child: Image.asset(
+                                            'assets/images/icons/placefill.png'),
                                       ),
-                                      Text(
+                                    ),
+                                    SizedBox(
+                                      width: 200,
+                                      child: Text(
                                         distance,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
                                         style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 12,
                                           color: Color(0xffB4B4B4),
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ]),
                                 ),
                               ],
                             ),
                           ],
-                        ),
-                      );
-                    }),
-                  ),
-                ],
+                        );
+                      }),
+                    ),
+                  ],
+                ),
               ),
             ),
             Positioned(
-              right: 5,
-              top: 5,
+              right: 25, //responsivo
+              top: 15,
               child: FavoriteButton(
+                iconSize: 50,
                 // stack positioned
                 valueChanged: (_isFavorite) {
                   debugPrint('Is Favorite $_isFavorite)');

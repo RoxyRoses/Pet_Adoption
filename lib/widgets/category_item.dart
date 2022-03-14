@@ -65,7 +65,7 @@ class CategoryItem extends StatelessWidget {
     return GestureDetector(
       onTap: tap,
       child: Padding(
-        padding: externalPadding!,
+        padding: externalPadding ?? const EdgeInsets.all(0.8),
         child: Center(
           child: Container(
             height: height,
@@ -76,7 +76,7 @@ class CategoryItem extends StatelessWidget {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.min, // ocyupa apenas o necessario
               children: [
                 SizedBox(
                   height: height * 50 / 89,

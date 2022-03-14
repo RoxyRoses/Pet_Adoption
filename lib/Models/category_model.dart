@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
-class Model extends StatelessWidget {
+class CategoryModel extends StatelessWidget {
   String name;
   bool isSelected;
 
-  Model({
+  CategoryModel({
     Key? key,
     this.name = "",
     this.isSelected = false,
