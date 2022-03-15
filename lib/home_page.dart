@@ -65,7 +65,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size.width;
+    final size =
+        MediaQuery.of(context).size.width; // tamanho total lateral da tela
 
     return Scaffold(
       appBar: const PreferredSize(
@@ -73,6 +74,7 @@ class _HomePageState extends State<HomePage> {
         child: BarraApp(),
       ),
       body: SingleChildScrollView(
+        // adiciona scroll horizontal
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -82,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Container(
                       padding: const EdgeInsets.only(left: 15),
-                      height: 45,
+                      height: size * 0.2,
                       child: CircleAvatar(
                         radius: 25,
                         backgroundColor: Colors.white,

@@ -13,7 +13,7 @@ class CardItem extends StatelessWidget {
   const CardItem(
       {Key? key,
       this.height = 256,
-      this.width = 630, //pega maximo de um numero double
+      this.width = 630,
       this.imagePath = 'assets/images/pets/perfil.png',
       this.petName = 'Dog',
       this.petBreed = 'Breed',
@@ -32,7 +32,9 @@ class CardItem extends StatelessWidget {
               padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
               child: Container(
                 padding: EdgeInsets.all(size.height * 8 / 632),
-                height: height * (size.height / 1334),
+                height: height *
+                    (size.height /
+                        1334), // tamanho total do widget dividido pelo tamanho da tela
                 width: width,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(height * 25 / 200),
@@ -82,7 +84,7 @@ class CardItem extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: width * 32 / 632,
-                              color: Color(0xff747372),
+                              color: const Color(0xff747372),
                             ),
                           ),
                           const SizedBox(height: 6),
@@ -102,7 +104,7 @@ class CardItem extends StatelessWidget {
                           ),
                           Row(children: [
                             SizedBox(
-                              height: 15,
+                              height: height * 22 / 256,
                               child: AspectRatio(
                                 aspectRatio: 1,
                                 child: Image.asset(
@@ -131,11 +133,12 @@ class CardItem extends StatelessWidget {
               ),
             ),
             Positioned(
-              right: 25, //responsivo
-              top: 15,
+              right: height * 18 / 256,
+              top: height * 18 / 256,
               child: FavoriteButton(
-                iconSize: 50,
-                // stack positioned
+                iconSize: height *
+                    46 /
+                    256, // altura card * altura do coração / altura do card (Widget)
                 valueChanged: (_isFavorite) {
                   debugPrint('Is Favorite $_isFavorite)');
                 },
